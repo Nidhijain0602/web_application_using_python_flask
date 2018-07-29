@@ -1,5 +1,10 @@
 ''' simple input dictionary with their name and contribution'''
 dic={"Sweety Jain":200,"Toni Jain":400,"Sonu Jain":500,"Moni Jain":400}
+
+print("INITIAL CONTRIBUTION :")
+for key in dic.keys():
+    print(key+':'+str(dic[key]))
+
 #empty dic1 to take person's name and how much extra or less amount given by person
 dic1={}
 #empty list for taking amount from dic
@@ -9,24 +14,19 @@ for name in dic:
 a=sum(lst)#total amount given by everyone
 b=len(lst)#length of list
 share=a/b # equal share of each person that he need to give
-print(share)
 #entering values in dic1
 for name in dic:
     if dic[name]>share:
         x=dic[name]-share
-        print(name , x)
         if name not in dic1:
             dic1[name]=x
     elif(dic[name]<share):
         x=dic[name]-share
-        print(name,x)
         if name not in dic1:
             dic1[name]=x
     else:
-        print(name + " " + " settel ")
         if name not in dic1:
             dic1[name]=0
-print(dic1)
 negative={}#empty dictionary for taking values which have negative amount from dic1
 positive={}#empty dictionary for taking values which have positive amount from dic1
 output={}#empty dictionary for taking output
@@ -38,8 +38,6 @@ for key ,val in dic1.items():
     else:
         if key not in positive:
             positive[key]=val
-print(negative)
-print(positive)
 #taking keys form positive and negative and evaluating their diffrence
 for poskey in positive.keys():
     for negkey in negative.keys():
@@ -58,7 +56,8 @@ for poskey in positive.keys():
             else:
                 output[poskey].append([negkey,abs(negative[negkey])])
             negative[negkey] = 0
-print(output)
+print()
+print('FINAL SETTLEMENT : ')
 for result, b  in output.items():
     print(result   + " " + "will get" + " " + str(b[0][1])  +" " + "from" +" "+  str(b[0][0]))#printing final output one person giving money to another
 
